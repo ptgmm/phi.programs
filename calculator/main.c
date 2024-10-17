@@ -18,7 +18,7 @@ int button9press = 0;
 void drawText(float x, float y, const char* text) {
     glRasterPos2f(x, y);
     while (*text) {
-        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *text);
+        glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, *text);
         text++;
     }
 }
@@ -65,6 +65,8 @@ void display(){
         glVertex2f(215.0f, 335.0f);
     glEnd();
 
+    glColor3f(1.0f, 1.0f, 1.0f);
+    drawText(215.0f + 20, 285.0f + 16, "7");
 //----------------------------------------
     if (button8press){
         glColor3f(0.376f, 0.376f, 0.376f);
@@ -78,6 +80,9 @@ void display(){
         glVertex2f(325.0f, 335.0f);
         glVertex2f(275.0f, 335.0f);   
     glEnd();
+
+    glColor3f(1.0f, 1.0f, 1.0f);
+    drawText(275.0f + 20, 285.0f + 16, "8");
 
 //----------------------------------------
     if (button9press){
@@ -93,6 +98,9 @@ void display(){
         glVertex2f(335.0f, 335.0f); 
     glEnd(); 
 
+
+    glColor3f(1.0f, 1.0f, 1.0f);
+    drawText(335.0f + 20, 285.0f + 16, "9");
 //----------------------------------------
 // Second Row 4, 5, 6
 //----------------------------------------
@@ -109,6 +117,9 @@ void display(){
         glVertex2f(215.0f, 275.0f);
     glEnd();
 
+    glColor3f(1.0f, 1.0f, 1.0f);
+    drawText(215.0f + 20, 255.0f - 15, "4");
+
 //----------------------------------------
      if (button5press){
         glColor3f(0.376f, 0.376f, 0.376f);
@@ -123,6 +134,8 @@ void display(){
         glVertex2f(275.0f, 275.0f);   
     glEnd();
 
+    glColor3f(1.0f, 1.0f, 1.0f);
+    drawText(275.0f + 20, 255.0f - 15, "5");
 //----------------------------------------
     if (button6press){
         glColor3f(0.376f, 0.376f, 0.376f);
@@ -137,6 +150,8 @@ void display(){
         glVertex2f(335.0f, 275.0f); 
     glEnd(); 
 
+    glColor3f(1.0f, 1.0f, 1.0f);
+    drawText(335.0f + 20, 255.0f - 15, "6");
 //----------------------------------------
 // Third Row 1, 2, 3
 //----------------------------------------
@@ -153,6 +168,9 @@ void display(){
         glVertex2f(215.0f, 215.0f);
     glEnd();
 
+    glColor3f(1.0f, 1.0f, 1.0f);
+    drawText(215.0f + 20, 165.0f + 16, "1");
+
 //----------------------------------------
     if (button2press){
         glColor3f(0.376f, 0.376f, 0.376f);
@@ -167,6 +185,8 @@ void display(){
         glVertex2f(275.0f, 215.0f);   
     glEnd();
 
+    glColor3f(1.0f, 1.0f, 1.0f);
+    drawText(275.0f + 20, 165.0f + 16, "2");
 //----------------------------------------
     if (button3press){
         glColor3f(0.376f, 0.376f, 0.376f);
@@ -181,6 +201,8 @@ void display(){
         glVertex2f(335.0f, 215.0f); 
     glEnd(); 
 
+    glColor3f(1.0f, 1.0f, 1.0f);
+    drawText(335.0f + 20, 165.0f + 16, "3");
 //----------------------------------------
 // Fourth Row 0
 //----------------------------------------
@@ -197,6 +219,8 @@ glBegin(GL_QUADS);
         glVertex2f(215.0f, 155.0f);
     glEnd();
 
+    glColor3f(1.0f, 1.0f, 1.0f);
+    drawText(215.0f + 20, 105.0f + 16, "0");
 //----------------------------------------
     glutSwapBuffers();
 }
@@ -257,8 +281,6 @@ int main(int argc, char** argv){
     glutInitWindowPosition(100, 100);
     glutCreateWindow("Calculator");
     init();
-    glutIdleFunc(drawText);
-    glutIdleFunc(HandleButtonPress);
     glutDisplayFunc(display);
     glutMouseFunc(mouse);
     glutMainLoop();
