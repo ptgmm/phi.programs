@@ -14,6 +14,17 @@ int button7press = 0;
 int button8press = 0;
 int button9press = 0;
 
+int show0 = 0;
+int show1 = 0;
+int show2 = 0;
+int show3 = 0;
+int show4 = 0;
+int show5 = 0;
+int show6 = 0;
+int show7 = 0;
+int show8 = 0;
+int show9 = 0;
+
 
 void drawText(float x, float y, const char* text) {
     glRasterPos2f(x, y);
@@ -23,7 +34,7 @@ void drawText(float x, float y, const char* text) {
     }
 }
 
-void HandleButtonPress(int ButtonValue){
+/* void HandleButtonPress(int ButtonValue){
     if (ButtonValue == 0){
         printf("0\n");
     } else if (ButtonValue == 1){
@@ -45,7 +56,7 @@ void HandleButtonPress(int ButtonValue){
     } else if (ButtonValue == 9){
         printf("9\n");
     }
-}
+}*/ 
 
 void display(){ 
     glClear(GL_COLOR_BUFFER_BIT);
@@ -222,6 +233,39 @@ glBegin(GL_QUADS);
     glColor3f(1.0f, 1.0f, 1.0f);
     drawText(215.0f + 20, 105.0f + 16, "0");
 //----------------------------------------
+    
+    if (show7){
+        glColor3f(1.0f, 1.0f, 1.0f);
+        drawText(530.0f, 400.0f, "7");
+    } else if (show8){
+        glColor3f(1.0f, 1.0f, 1.0f);
+        drawText(530.0f, 400.0f, "8");
+    } else if (show9){
+        glColor3f(1.0f, 1.0f, 1.0f);
+        drawText(530.0f, 400.0f, "9");
+    } else if (show4){
+        glColor3f(1.0f, 1.0f, 1.0f);
+        drawText(530.0f, 400.0f, "4");
+    } else if (show5){
+        glColor3f(1.0f, 1.0f, 1.0f);
+        drawText(530.0f, 400.0f, "5");
+    } else if (show6){
+        glColor3f(1.0f, 1.0f, 1.0f);
+        drawText(530.0f, 400.0f, "6");
+    } else if (show1){
+        glColor3f(1.0f, 1.0f, 1.0f);
+        drawText(530.0f, 400.0f, "1");
+    } else if (show2){
+        glColor3f(1.0f, 1.0f, 1.0f);
+        drawText(530.0f, 400.0f, "2");
+    } else if (show3){
+        glColor3f(1.0f, 1.0f, 1.0f);
+        drawText(530.0f, 400.0f, "3");
+    } else if (show0){
+        glColor3f(1.0f, 1.0f, 1.0f);
+        drawText(530.0f, 400.0f, "0");
+    }
+
     glutSwapBuffers();
 }
 
@@ -229,49 +273,61 @@ void mouse(int button, int state, int x, int y){
     int windowHeight = glutGet(GLUT_WINDOW_HEIGHT);
     int UpdatedY = windowHeight - y;
     if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN){
+        //Checking if you click in this button
         // First Row
         if (x >= 215.0f  && x <= 265.0f  && UpdatedY >= 285.0f && UpdatedY <= 335.0f){
             button7press = !button7press;
-            printf("7\n");
-        } else if ( x >= 275.0f && x <= 325.0f && UpdatedY >= 285.0f && UpdatedY <= 335.0f){
+            show7 = !show7;
+            printf("7");
+        } else if ( x >= 275.0f && x <= 325.0f && UpdatedY >= 285.0f && UpdatedY <= 335.0f){ 
             button8press = !button8press;
-            printf("8\n");
+            show8 = !show8;
+            printf("8");
         } else if ( x >= 335.0f && x <= 385.0f && UpdatedY >= 285.0f && UpdatedY <= 335.0f){
             button9press = !button9press;
-            printf("9\n");
+            show9 = !show9;
+            printf("9");
         //Second Row
         } else if ( x >= 215.0f && x <= 265.0f && UpdatedY >= 225.0f && UpdatedY <= 275.0f){
             button4press = !button4press;
-            printf("4\n");
+            show4 = !show4;
+            printf("4");
         } else if ( x >= 275.0f && x <= 325.0f && UpdatedY >= 225.0f && UpdatedY <= 275.0f){
             button5press = !button5press;
-            printf("5\n");
+            show5 = !show5;
+            printf("5");
         } else if ( x >= 335.0f && x <= 385.0f && UpdatedY >= 225.0f && UpdatedY <= 275.0f){
             button6press = !button6press;
-            printf("6\n");
+            show6 = !show6;
+            printf("6");
         // Third Row
         } else if ( x >= 215.0f && x <= 265.0f && UpdatedY >= 165.0f && UpdatedY <= 215.0f){
             button1press = !button1press;
-            printf("1\n");
+            show1 = !show1;
+            printf("1");
         } else if ( x >= 275.0f && x <= 325.0f && UpdatedY >= 165.0f && UpdatedY <= 215.0f){
             button2press = !button2press;
-            printf("2\n");
+            show2 = !show2;
+            printf("2");
         } else if ( x >= 335.0f && x <= 385.0f && UpdatedY >= 165.0f && UpdatedY <= 215.0f){
             button3press = !button3press;
-            printf("3\n");
+            show3 = !show3;
+            printf("3");
         // Fourth Row
         } else if ( x >= 215.0f && x <= 265.0f && UpdatedY >= 105.0f && UpdatedY <= 155.0f){
             button0press = !button0press;
-            printf("0\n");
+            show0 = !show0;
+            printf("0");
         }
         glutPostRedisplay();
+        glutSwapBuffers();
     }
 }
 
 void init(){
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluOrtho2D(0.0, 600.0, 0.0, 500.0);
+    gluOrtho2D(0.0, 600.0, 0.0, 500.0); //Scale of cordinets  
 }
 
 int main(int argc, char** argv){
